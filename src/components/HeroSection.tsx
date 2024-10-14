@@ -1,3 +1,6 @@
+"use client";
+
+import Link from 'next/link';
 import React from 'react';
 
 const assessments = [
@@ -19,7 +22,10 @@ const HeroSection: React.FC = () => {
       <h1 className="lg:text-3xl text-lg font-bold"> FULL STACK</h1>
       <h1 className="lg:text-3xl text-lg font-bold">INTERSHIP</h1>
       <div className='mt-2 px-8 py-2 border rounded-full bg-gradient-to-r from-blue-200 to-red-500 text-xs'>JOIN US NOW</div>
+      <Link href="/form">
       <button className="mt-4 px-8 py-3 bg-red-500 rounded-full font-bold">GET STARTED</button>
+      </Link>
+      
       </div>
       </div>
       <div className="flex flex-col">
