@@ -4,7 +4,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='bg-hero-bg'>
+    <div className='bg-hero-bg bg-cover bg-center'>
       <Navbar/>
       <HeroSection/>
     </div>
