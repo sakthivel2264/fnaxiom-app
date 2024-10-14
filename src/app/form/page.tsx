@@ -57,8 +57,9 @@ const page: React.FC = () => {
   return (
     <div className='bg-hero-bg bg-cover bg-center'>
       <Navbar/>
-      <div className='flex justify-center min-h-screen border bg-white/0 backdrop-blur-sm '>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      <div className='flex justify-center min-h-screen'>
+      <div className='flex justify-center items-start border bg-white/0 backdrop-blur-sm h-fit rounded-xl'>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 flex flex-col justify-center p-8 ">
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-700">
           Name
@@ -107,11 +108,13 @@ const page: React.FC = () => {
         )}
       </div>
 
-      <Button type="submit" disabled={isSubmitting} className="w-full">
+      <Button type="submit" disabled={isSubmitting} className="w-full rounded-xl">
         {isSubmitting ? 'Submitting...' : 'Submit'}
       </Button>
     </form>
       </div>
+      </div>
+      
         
     </div>
     

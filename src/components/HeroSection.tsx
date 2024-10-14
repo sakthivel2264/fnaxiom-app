@@ -33,7 +33,9 @@ const HeroSection: React.FC = () => {
           {assessments.map((item, index) => (
             <div key={index} className="p-8 w-32 text-white rounded-lg">
               <h3 className="text-lg font-bold flex">{item.title}</h3>
-              <button className="mt-4 px-8 py-1 bg-red-500 rounded-full font-bold text-sm">GET STARTED</button>
+              <Link href="/form">
+      <button className="mt-4 px-8 py-3 bg-red-500 rounded-full font-bold">GET STARTED</button>
+      </Link>
             </div>
           ))}
         </div>

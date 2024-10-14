@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { MenuIcon, XIcon } from 'lucide-react'; 
+import Link from 'next/link';
 
 
 const Navbar: React.FC = () => {
@@ -28,7 +29,9 @@ const Navbar: React.FC = () => {
       </div>
 
       <div className="hidden md:flex space-x-4">
-        <Button className="px-4 py-2 bg-red-500 rounded-full text-white font-bold">GET STARTED</Button>
+      <Link href="/form">
+      <button className="mt-4 px-8 py-3 bg-red-500 rounded-full font-bold">GET STARTED</button>
+      </Link>
       </div>
 
       <div className="md:hidden">
@@ -43,7 +46,9 @@ const Navbar: React.FC = () => {
             <a href="#home" className="hover:text-gray-500" onClick={toggleMenu}>Home</a>
             <a href="#about" className="hover:text-gray-500" onClick={toggleMenu}>About</a>
             <a href="#contact" className="hover:text-gray-500" onClick={toggleMenu}>Contact</a>
-            <Button className="px-4 py-2 bg-red-500 rounded-full text-white font-bold" onClick={toggleMenu}>GET STARTED</Button>
+            <Link href="/form">
+      <button className="mt-4 px-8 py-3 bg-red-500 rounded-full font-bold">GET STARTED</button>
+      </Link>
           </div>
         </div>
       )}
