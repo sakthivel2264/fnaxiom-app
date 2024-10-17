@@ -1,42 +1,44 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { verify } from 'jsonwebtoken';
 import User from '@/models/user'; 
 import dbConnect from '@/utils/dbConnect';
+import { NextResponse } from 'next/server';
 
-const verifyAdmin = async (req, res, next) => {
+
+const verifyAdmin = async (req) => {
+  const authHeader = req.headers.get('Authorization');
+  if (!authHeader) {
+    return NextResponse.json({ message: 'Authorization token is missing.' }, { status: 401 });
+  }
+
+  const token = authHeader.split(' ')[1]; 
   try {
-    const authHeader = req.headers.authorization;
-    if (!authHeader) {
-      return res.status(401).json({ message: 'Authorization token is missing.' });
-    }
-
-    const token = authHeader.split(' ')[1]; 
-    const decoded = verify(token, process.env.JWT_SECRET); 
-
+    const decoded = verify(token, process.env.JWT_SECRET);
     const user = await User.findById(decoded.userId);
-    
+
     if (user && user.role === 'admin') {
-      next();
+      return true; 
     } else {
-      return res.status(403).json({ message: 'Access denied. Admins only.' });
+      return NextResponse.json({ message: 'Access denied. Admins only.' }, { status: 403 });
     }
   } catch (error) {
-    return res.status(401).json({ message: 'Authentication failed.', error: error.message });
+    return NextResponse.json({ message: 'Authentication failed.', error: error.message }, { status: 401 });
   }
 };
 
-export async function GET(req, res) {
+// GET function to fetch users
+export async function GET(req) {
+  // Connect to the database
   await dbConnect();
+  
+  const adminCheck = await verifyAdmin(req);
+  if (adminCheck !== true) return adminCheck; 
+
   try {
-    const users = await User.find();
-    return res.status(200).json(users);
+    const users = await User.find(); 
+    return NextResponse.json(users, { status: 200 });
   } catch (error) {
     console.error('Error fetching users:', error);
-    return res.status(500).json({ message: 'Error fetching users', error: error.message });
+    return NextResponse.json({ message: 'Error fetching users', error: error.message }, { status: 500 });
   }
-}
-
-export default function userRoutes(app) {
-
-  app.get('/api/users', verifyAdmin, GET);
 }
