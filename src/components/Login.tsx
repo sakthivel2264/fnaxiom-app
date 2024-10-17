@@ -63,7 +63,7 @@ const Login: React.FC = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="border rounded w-full p-2"
+            className="border rounded w-full p-2 text-black"
             required
           />
         </div>
@@ -77,7 +77,7 @@ const Login: React.FC = () => {
             name="password"
             value={formData.password}
             onChange={handleChange}
-            className="border rounded w-full p-2"
+            className="border rounded w-full p-2 text-black"
             required
           />
         </div>
