@@ -19,9 +19,11 @@ const Navbar: React.FC = () => {
       <div className="flex items-center space-x-4">
         <a className="text-2xl font-bold">FNAXIOM</a>
         <div className="hidden md:flex space-x-4">
-          <a href="#home" className="hover:text-gray-500">HOME</a>
+          <a href="/" className="hover:text-gray-500">HOME</a>
           <a href="#about" className="hover:text-gray-500">ABOUT</a>
           <a href="#contact" className="hover:text-gray-500">CONTACT</a>
+          <a href="/admin" className="hover:text-gray-500">ADMIN</a>
+          
         </div>
         
       </div>
@@ -30,7 +32,8 @@ const Navbar: React.FC = () => {
       </div>
 
       <div className="hidden md:flex space-x-4">
-      <Link href="/form">
+      <a href="/login" className="hover:text-gray-500">LOGIN</a>
+      <Link href="/register">
       <button className="mt-4 px-8 py-3 bg-red-500 rounded-full font-bold">GET STARTED</button>
       </Link>
       </div>
@@ -44,10 +47,12 @@ const Navbar: React.FC = () => {
       {isOpen && (
         <div className="absolute top-16 left-0 w-full shadow-lg z-50 md:hidden bg-white/0 backdrop-blur-sm">
           <div className="flex flex-col items-start space-y-4 p-4">
-            <a href="#home" className="hover:text-gray-500" onClick={toggleMenu}>Home</a>
+            <a href="/" className="hover:text-gray-500" onClick={toggleMenu}>Home</a>
             <a href="#about" className="hover:text-gray-500" onClick={toggleMenu}>About</a>
             <a href="#contact" className="hover:text-gray-500" onClick={toggleMenu}>Contact</a>
-            <Link href="/form">
+            <a href="/admin" className="hover:text-gray-500" onClick={toggleMenu}>Admin</a>
+            <a href="/Login" className="hover:text-gray-500" onClick={toggleMenu}>Login</a>
+            <Link href="/register">
       <button className="mt-4 px-8 py-3 bg-red-500 rounded-full font-bold">GET STARTED</button>
       </Link>
           </div>
